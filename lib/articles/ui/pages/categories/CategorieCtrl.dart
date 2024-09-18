@@ -25,13 +25,11 @@ class CategorieCtrl extends _$CategorieCtrl{
 
   void recupererListCategories() async{
     print("Run...");
-      state=CategorieState(isLoading: true, data: state.data);
-      var interactor=ref.watch(articleInteractorProvider);
-      var res= await interactor.getCategorieListUseCase.run();
-      print(res);
+    state=CategorieState(isLoading: true, data: state.data);
+    var interactor=ref.watch(articleInteractorProvider);
+    var res= await interactor.getCategorieListUseCase.run();
+    print(res);
     state=CategorieState(isLoading: false, data: res);
 
-
   }
-
 }

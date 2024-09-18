@@ -8,25 +8,25 @@ import "package:http/http.dart" as http;
 class ArticleNetworkServiceImpl implements ArticlesNetworkService{
   var baseURL=dotenv.env['BASE_URL'];
 
-
   @override
   Future<List<Categorie>> getListCategories(String token) async {
     var res= await http.get(Uri.parse("$baseURL/api/categories"),
         headers: {"Authorization": "Bearer $token"});
     var reponseList=json.decode(res.body) as List;
+    print(json.decode(res.body));
     print("responseMap $reponseList");
     await Future.delayed(Duration(seconds: 3));
-    var responseFinal= reponseList.map((e)=> Categorie.fromJson(e) ).toList();
+    var responseFinal= reponseList.map((e) => Categorie.fromJson(e)).toList();
     return responseFinal;
   }
 }
 
-void main() async {
- await dotenv.load(fileName: ".env");
-  var token="1|KE0ezAjUzFrRbvBVHvIl9VSshhiHPVtqqJKwHQhO738b167d";
-  var serviceImpl=ArticleNetworkServiceImpl();
-  var res= await serviceImpl.getListCategories(token);
-  res.forEach((v){
-    print(v.name);
-  });
-}
+// void main() async {
+//  await dotenv.load(fileName: ".env");
+//   var token="19|rQdwQQRGSQAKWB69xgjP2wKZLzXDa8gpmoQuaLCG3d6b78b3";
+//   var serviceImpl=ArticleNetworkServiceImpl();
+//   var res= await serviceImpl.getListCategories(token);
+//   res.forEach((v){
+//     print(v.name);
+//   });
+// }

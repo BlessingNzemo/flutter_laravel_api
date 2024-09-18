@@ -29,7 +29,7 @@ class AuthenticateResponse {
   });
 
   factory AuthenticateResponse.fromJson(Map json) => AuthenticateResponse(
-    id: json["id"],
+    id: json["id"] ?? 0,
     name: json["name"] ?? "",
     email: json["email"] ?? "",
     emailVerifiedAt: json["email_verified_at"]!=null? DateTime.parse(json["email_verified_at"] ) : DateTime.now(),

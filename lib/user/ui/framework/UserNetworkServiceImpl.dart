@@ -13,6 +13,7 @@ class UserNetworkServiceImpl implements UserNetworkService{
   Future<AuthenticateResponse> authenticate(Authenticate data) async{
     var res= await http.post(Uri.parse("$baseURL/api/login"),
     body: data.toJson());
+    print(res.body);
     var reponseMap=json.decode(res.body) as Map;
     print("responseMap $reponseMap");
     var reponseFinal=AuthenticateResponse.fromJson(reponseMap);
@@ -20,8 +21,8 @@ class UserNetworkServiceImpl implements UserNetworkService{
   }
 }
 
-void main(){
-  var impl=UserNetworkServiceImpl();
-  var data=Authenticate(email: "email", password: "password");
-  impl.authenticate(data);
-}
+// void main(){
+//   var impl=UserNetworkServiceImpl();
+//   var data=Authenticate(email: "junioskyjustin@gmail.com", password: "Juniorwalker270703");
+//   impl.authenticate(data);
+// }
